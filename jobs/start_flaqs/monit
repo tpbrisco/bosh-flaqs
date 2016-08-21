@@ -1,0 +1,5 @@
+check process flaqs
+  with pidfile /var/vcap/sys/run/start_flaqs/flaqs.pid
+  start program "/var/vcap/jobs/start_flaqs/bin/ctl start"
+  stop program "/var/vcap/jobs/start_flaqs/bin/ctl stop"
+  group vcap

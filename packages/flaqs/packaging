@@ -1,0 +1,14 @@
+# abort script on any command that exits with a non zero value
+set -ev
+echo CWD is `pwd`
+echo installing flaqs.tar into ${BOSH_INSTALL_TARGET}
+ls
+D=`pwd`
+cd ${BOSH_INSTALL_TARGET}
+tar xvf ${D}/flaqs.tar
+#
+# continue with pip install
+# apt-get -y install python-pip
+# install packages from vendor area
+# pip install Flask ystockquote
+

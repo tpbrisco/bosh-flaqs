@@ -1,0 +1,16 @@
+---
+packages:
+- name: flaqs
+  version: d8ad6573ff2d703a4222f01c36c971cef3167f58
+  fingerprint: d8ad6573ff2d703a4222f01c36c971cef3167f58
+  sha1: d1f39503059eebd29b6e7c3632b781ca02c0a2e2
+  dependencies: []
+jobs:
+- name: start_flaqs
+  version: 603438e645345661df816676600a9d8c8688b474
+  fingerprint: 603438e645345661df816676600a9d8c8688b474
+  sha1: d20c93e9b85c0eb1d4a395a44c4da01c47c93be6
+commit_hash: '00000000'
+uncommitted_changes: false
+name: start_flaqs
+version: 0+dev.25

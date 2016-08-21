@@ -1,0 +1,8 @@
+---
+name: start_flaqs
+description: start FLAQS process
+templates:
+  ctl: bin/ctl
+
+packages:
+  - flaqs
