@@ -1,0 +1,42 @@
+
+# export AWS_ACCESS_KEY_ID/AWS_SECRET_ACCESS_KEY and
+# aws_access_key / aws_secret_access_key for vagrant
+# BOSH_LITE_PRIVATE_KEY (pem file from aws)
+# BOSH_LITE_SECURITY_GROUP (sg-* from your VPC)
+# BOSH_LITE_SUBNET_ID (subnet-* from your VPC)
+. ../aws-env.sh
+
+vagrant up --provider=aws
+
+bosh target <IP from above>
+     usename: admin, password: admin
+# note you can ssh to this box with "ssh -i ../bosh.pem ubuntu@<ipaddress>"
+# this is handy/nice/required for any bosh release deployment debugging
+# You can "bosh target 127.0.0.1" from here.
+# bosh stemcells|deployments|releases is nice from here
+
+bosh upload stemcell `cat ../BOSH_STEMCELL_URL.txt`
+
+bosh deployment <yourmanifest.yml>
+bosh release create --force
+bosh upload release
+     bosh delete release <name> [<version>] [--force]
+     bosh releases
+
+bosh deploy (your job)
+
+# to make debugging easier - copy your manifest.yml file to the remote AWS instance
+#   scp -i ../bosh.pem manifest.yml ubuntu@<IP for bosh director>
+#   then, on the remote bosh director
+#   bosh deployment manifest.yml
+# You can then "bosh ssh" to your target VM
+# and troubleshoot
+#
+# startup files:
+#    /var/vcap/jobs/<yourjob>/bin/ctl {start|stop}
+#    /var/vcap/packages/<yourpackage>/          # your source tree, unpackaged
+
+bosh delete deployment <yourdeploymentname>
+  leaves release intact, just kills vms
+
+# cd ../bosh-lite; "vagrant destroy " to kill AWS vm
