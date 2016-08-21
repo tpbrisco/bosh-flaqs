@@ -1,7 +1,0 @@
----
-applications:
-  - name: flaqs
-    memory: 32M
-    disk: 256MB
-    command: python flaqs.py
-    buildpack: python_buildpack

@@ -1,5 +1,0 @@
-#!/bin/bash
-#
-# get CWD
-cd $WEBAPP_DIR
-python flaqs.py
